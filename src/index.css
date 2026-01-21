@@ -1,0 +1,68 @@
+
+@import url('https://fonts.cdnfonts.com/css/jetbrains-mono');
+@import "tailwindcss";
+
+
+html,
+body,
+#app{
+    height: 100%;
+    font-family: 'JetBrains Mono', sans-serif;
+}
+
+
+
+:root,[data-theme="light"]{ /* or beige/cream/neutral */
+    --bg-color: #F9F8F6;
+    --border-color: #D9CFC7;
+    --button-bg: #EFE9E3;
+    --text-color:#b6946a;
+}
+
+[data-theme="dark"]{ /* or midnight/teal */
+    --bg-color: #222831;
+    --border-color: #76ABAE;
+    --button-bg: #31363F;
+    --text-color:#EEEEEE;
+}
+
+[data-theme="pink"]{ /* or strawberry/berry */
+    --bg-color: #FFC4C4;
+    --border-color: #EE6983;
+    --button-bg: #FCF5EE;
+    --text-color:#850E35;
+}
+
+[data-theme="green"]{ /* or forest/moss */
+    --bg-color: #a4c496;
+    --border-color: #d9ead3;
+    --button-bg: #8ca481;
+    --text-color:#8b5d12;
+}
+
+[data-theme="blue"]{ /* or navy/ocean */
+    --bg-color: #1B3C53;
+    --border-color: #456882;
+    --button-bg: #234C6A;
+    --text-color:#D2C1B6;
+}
+
+
+#preview h1 { font-size: 2rem; border-bottom: 1px solid #ddd; }
+#preview h2 { font-size: 1.5rem; margin-top: 1rem; }
+#preview h3 { font-size: 1.2rem; }
+#preview p { line-height: 1.6; margin: 0.5rem 0; }
+
+#preview code {
+  background: var(--bg-color);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+#preview pre {
+  background: var(--button-bg);
+  color: var(--text-color);
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
