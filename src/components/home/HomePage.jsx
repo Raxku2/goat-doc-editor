@@ -21,7 +21,7 @@ const HomePage = () => {
             </div>
 
             <div class="w-[90%] md:w-[60%] lg:w-[20%]">
-                <button class="p-4 rounded border-2 text-white/20 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg)  flex justify-center items-center text-2xl cursor-pointer m-1 w-full"
+                <button class="p-4 rounded border-2 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg)  flex justify-center items-center text-2xl cursor-pointer m-1 w-full"
                     onClick={e => { route('/open') }}
                 >
                     <h1 class="mx-4">Browse File</h1>
