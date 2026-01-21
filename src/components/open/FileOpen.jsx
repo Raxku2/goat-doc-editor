@@ -68,7 +68,7 @@ const FileOpen = () => {
                         class="p-4 rounded border-2 border-(--border-color) 
                         md:border-(--bg-color) hover:border-(--border-color) 
                         hover:bg-(--button-bg) flex justify-center items-center 
-                        text-2xl cursor-pointer m-2 w-[50%]"
+                        text-2xl cursor-pointer m-2 w-[50%] text-white/20"
                     >
                         <h1 class="mx-4">Load File</h1>
                         <RiFolderOpenLine />
