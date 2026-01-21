@@ -4,6 +4,7 @@ import { route } from 'preact-router';
 
 
 const NavBar = () => {
+    const PROJECT_REPO = import.meta.env.VITE_PROJECT_REPO
     return (
         <div class=" p-1 text-2xl justify-between flex items-center  ">
 
@@ -18,7 +19,7 @@ const NavBar = () => {
                     type="button"
                     class="cursor-pointer p-2 mx-2 text-(--border-color) "
                     onClick={e => {
-                        window.open("https://github.com/raxku2", '_blank')
+                        window.open(PROJECT_REPO, '_blank')
                     }}
                 >
                     <RiGithubLine />
