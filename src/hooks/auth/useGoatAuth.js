@@ -14,7 +14,6 @@ const useAuth = () => {
             const response = await fetch(`${API_URL}/auth?authToken=${authToken}`);
 
             const data = await response.json();
-            console.log(data);
 
             if (response.status === 201 || response.status === 302) {
 
