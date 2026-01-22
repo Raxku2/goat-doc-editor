@@ -5,31 +5,42 @@ import { RiFileAddLine, RiFileEditLine, RiFolderOpenLine } from '@remixicon/reac
 import { route } from 'preact-router';
 import DocumentCard from '../cards/DocumentCard';
 import { UseBackend } from '../../hooks';
+import LoadingBar from '../lodingBar/LoadingBar';
 
 const FileOpen = () => {
     const { smtitle, smid } = useSampleDoc();
     const { userDocument, userLogd } = UserStore();
     const [docOnUserAccount, setDocOnUserAccount] = useState(true);
     const { get_user_docs } = UseBackend();
+    const [loadingbarVisibility, setLoadingbarVisibility] = useState(true);
+    const [docVisibility, setDocVisibility] = useState(false);
 
     useEffect(() => {
 
         if (userLogd && userDocument.length > 0) {
+            setLoadingbarVisibility(false)
             setDocOnUserAccount(true);
+            setDocVisibility(true);
         } else {
+            setLoadingbarVisibility(false)
             setDocOnUserAccount(false);
+            setDocVisibility(true);
         }
     }, [userDocument, userLogd]);
 
-    useEffect(() => {
+    useEffect( async () => {
         if (userLogd) {
-            get_user_docs();
+            setLoadingbarVisibility(true);
+            setDocVisibility(false);
+            await get_user_docs();
         }
     }, []);
 
-    useEffect(() => {
+    useEffect( async () => {
         if (userLogd) {
-            get_user_docs();
+            setLoadingbarVisibility(true);
+            setDocVisibility(false);
+            await get_user_docs();
         }
     }, [userLogd]);
 
@@ -59,7 +70,13 @@ const FileOpen = () => {
         <div class="w-full h-full flex justify-center ">
             <div class="w-full md:w-[80%] lg:w-[70%] flex justify-center items-center flex-col ">
 
-                {documentLoader(docOnUserAccount)}
+                <div hidden={!docVisibility} class="w-full flex justify-center items-center flex-col ">
+                    {documentLoader(docOnUserAccount)}
+                </div>
+
+                <div class="h-4 w-full md:w-[80%] lg:w-[70%]" hidden={!loadingbarVisibility}>
+                    <LoadingBar />
+                </div>
 
                 <div class="w-[50%]  flex justify-between">
 

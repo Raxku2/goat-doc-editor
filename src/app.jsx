@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import { Auth, DocEditor, FileOpen, HomePage, Navbar, Settings } from './components';
+import { Auth, DocEditor, FileOpen, HomePage, Navbar, Settings, Test } from './components';
 import { Router } from 'preact-router';
 import { UseBackend, useTheme } from './hooks';
 import { useEffect } from 'preact/hooks';
@@ -24,6 +24,7 @@ const App = () => {
         <FileOpen path="/open" />
         <DocEditor path="/editor" />
         <Auth path='/auth' />
+        <Test path="/test" />
       </Router>
 
     </div>
