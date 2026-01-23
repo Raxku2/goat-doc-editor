@@ -20,6 +20,7 @@ const Auth = () => {
             setMessage("Token Not Found");
             setLoadingbarVisibility(false);
         }
+        window.history.replaceState(null, '', window.location.href);
     }, []);
 
     useEffect( async () => {

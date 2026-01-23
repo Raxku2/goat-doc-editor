@@ -21,8 +21,10 @@ const useAuth = () => {
                 setUserNameStore(data.name);
                 setUserIdStore(data._id);
                 saveUserToLocalStorage(data.name, data._id);
+                window.history.replaceState(null, '', window.location.href);
                 route("/settings");
             } else {
+                window.history.replaceState(null, '', window.location.href);
                 route("/");
             }
 
