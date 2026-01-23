@@ -60,7 +60,7 @@ const Settings = () => {
 
                     <div class="flex justify-center p-2 ">
 
-                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color)" >About</a>
+                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" >About</a>
                     </div>
 
                     <div class="flex justify-center items-center">
@@ -69,7 +69,7 @@ const Settings = () => {
 
                     <div class="flex justify-center p-2 ">
 
-                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color)" >Keyboard Shortcuts</a>
+                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" >Keyboard Shortcuts</a>
                     </div>
 
                     <div class="flex justify-center items-center">
