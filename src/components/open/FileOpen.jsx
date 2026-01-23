@@ -67,8 +67,8 @@ const FileOpen = () => {
     }
 
     return (
-        <div class="w-full h-full flex justify-center ">
-            <div class="w-full md:w-[80%] lg:w-[70%] flex justify-center items-center flex-col ">
+        <div class="w-full h-[90dvh] flex justify-center ">
+            <div class="w-full md:w-[80%] lg:w-[70%] flex justify-center items-center flex-col overflow-y-scroll ">
 
                 <div hidden={!docVisibility} class="w-full flex justify-center items-center flex-col ">
                     {documentLoader(docOnUserAccount)}

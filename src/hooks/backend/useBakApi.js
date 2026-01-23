@@ -4,7 +4,7 @@ const UseBackend = () => {
     const backendApi = import.meta.env.VITE_DOC_API
 
     const { userSignin, setUserNameStore, setUserIdStore, userId, addUserDocument } = UserStore();
-    const { title, data, id, setEditorDocData } = EditorDoc();
+    const { title, data, id, setEditorDocData, setEditorDocId } = EditorDoc();
 
     const saveUserToLocalStorage = (userName, userId) => {
         const userData = {
@@ -68,9 +68,9 @@ const UseBackend = () => {
     };
 
     const create_new = async () => {
-        const doc_title = await title ?? "untitled"
+        const doc_title = title ? title === "" : "untitled"
         console.log(doc_title);
-
+        
         const res = await fetch(`${backendApi}/document/doc`, {
             method: "POST",
             headers: {
@@ -83,8 +83,11 @@ const UseBackend = () => {
                 "data": data
             })
         });
+        const insert_data = await res.json();
 
         if (res.status === 201) {
+            // console.log(insert_data._id);
+            setEditorDocId(insert_data._id)
             console.log('created');
         } else {
             console.log('not created');
@@ -93,7 +96,7 @@ const UseBackend = () => {
     };
 
     const delete_doc = async (docid) => {
-        if (docid === 'GOAT'){
+        if (docid === 'GOAT') {
             return false
         }
         try {

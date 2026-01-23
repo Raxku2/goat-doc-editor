@@ -1,5 +1,5 @@
 
-const SaveDoc = (content, filename = 'document.md') => {
+const SaveDoc = (content, filename = 'untitled.md') => {
   try {
     // Validate input
     if (!content || typeof content !== 'string') {

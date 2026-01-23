@@ -1,7 +1,10 @@
 import { h, Component } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks'
 import { EditorDoc, UserStore } from '../../store';
-import { RiDeleteBinLine, RiEditBoxFill, RiEditBoxLine, RiEraserLine, RiEyeCloseLine, RiEyeFill, RiFileAddLine, RiFileCopyLine, RiLockFill, RiLockUnlockLine, RiSave2Line, RiUploadCloudLine } from '@remixicon/react'
+import {
+    RiDeleteBinLine, RiEditBoxFill, RiEditBoxLine, RiEraserLine, RiEyeCloseLine, RiEyeFill,
+    RiFileAddLine, RiFileCopyLine, RiLockFill, RiLockUnlockLine, RiSave2Line, RiUploadCloudLine
+} from '@remixicon/react'
 import { SaveDoc, UseBackend } from "../../hooks"
 
 const DocEditor = () => {
@@ -15,13 +18,45 @@ const DocEditor = () => {
     const [editorVisibility, setEditorVisibility] = useState(false);
     const [previewVisibility, setPreviewVisibility] = useState(false);
 
+    const [deleteBtnVisibility, setDeleteBtnVisibility] = useState(true);
+    const [addNewBtnVisibility, setAddNewBtnVisibility] = useState(true);
+    const [saveCloudBtnVisibility, setSaveCloudBtnVisibility] = useState(true);
+    const [saveBtnVisibility, setSaveBtnVisibility] = useState(true);
+    const [copyBtnVisibility, setCopyBtnVisibility] = useState(true);
+
     useEffect(() => {
         textboxRef.current.focus();
     }, []);
 
+
     useEffect(() => {
         setMarkedText(marked.parse(data));
-    }, [data])
+
+        if (data) {
+            setSaveBtnVisibility(true);
+            setCopyBtnVisibility(true);
+        }
+        else {
+            setSaveBtnVisibility(false);
+            setCopyBtnVisibility(false);
+        }
+
+        if(userLogd && id && id !== 'GOAT'){
+            setDeleteBtnVisibility(true);
+            setSaveCloudBtnVisibility(true);
+        }else{
+            setSaveCloudBtnVisibility(false);
+            setDeleteBtnVisibility(false);
+        }
+
+        if (userLogd && !id ){
+            setAddNewBtnVisibility(true);
+        }else{
+            setAddNewBtnVisibility(false);
+        }
+
+
+    }, [data, userLogd, id]);
 
 
 
@@ -60,19 +95,25 @@ const DocEditor = () => {
             </div>
             {/* <h1 class="bottom-0 left-0 absolute">ok</h1> */}
             <div class="bottom-0 left-0 absolute h-[10%] md:h-[5%] w-full p-1">
-                <div class="w-full h-full rounded border-2 border-solid border-(--border-color) flex flex-col-reverse md:flex-row items-center p-1">
+                <div class="w-full h-full rounded border-2 border-solid border-(--border-color) 
+                flex flex-col-reverse md:flex-row items-center p-1">
 
-                    <div class="h-full flex items-center w-full md:w-[50%] rounded justify-center md:justify-end  ">
+                    <div class="h-full flex items-center w-full md:w-[50%] rounded justify-center md:justify-end">
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
+                            hidden={!saveBtnVisibility}
                             onClick={() => {
                                 SaveDoc(data, title)
                             }}>
                             <RiSave2Line size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
-                            hidden={!userLogd}
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
+                            hidden={!addNewBtnVisibility}
                             onClick={() => {
                                 if (id === "GOAT") {
                                     return
@@ -82,8 +123,10 @@ const DocEditor = () => {
                             <RiFileAddLine size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
-                            hidden={!userLogd}
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
+                            hidden={!saveCloudBtnVisibility}
                             onClick={() => {
                                 if (id === "GOAT") {
                                     return
@@ -93,8 +136,10 @@ const DocEditor = () => {
                             <RiUploadCloudLine size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
-                            hidden={!userLogd}
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
+                            hidden={!deleteBtnVisibility}
                             onClick={() => {
                                 if (id === "GOAT") {
                                     return
@@ -106,7 +151,9 @@ const DocEditor = () => {
                             <RiDeleteBinLine size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
                             onClick={() => {
                                 setEditorLock(!isEditorLock);
                             }}>
@@ -114,7 +161,10 @@ const DocEditor = () => {
                             }
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
+                            hidden={!copyBtnVisibility}
                             onClick={() => {
                                 navigator.clipboard.writeText(data);
                             }}
@@ -122,21 +172,27 @@ const DocEditor = () => {
                             <RiFileCopyLine size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
                             onClick={() => {
                                 clearEditorDoc()
                             }}>
                             <RiEraserLine size={"20px"} />
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
                             onClick={(() => {
                                 setEditorVisibility(!editorVisibility);
                             })}>
                             {editorVisibility ? <RiEditBoxLine size={"20px"} /> : <RiEditBoxFill size={"20px"} />}
                         </button>
 
-                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color)  "
+                        <button type="button " class="flex justify-center items-center p-1 bg-(--button-bg) 
+                        text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                        cursor-pointer hover:text-(--border-color)  "
                             onClick={(() => {
                                 setPreviewVisibility(!previewVisibility)
                             })}>
@@ -148,8 +204,11 @@ const DocEditor = () => {
                     <div class="h-full flex items-center w-full md:w-[50%] rounded  ">
 
                         <input
-                            class="flex justify-center items-center p-1 bg-(--button-bg) text-md md:text-sm rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) cursor-pointer hover:text-(--border-color) outline-0 focus:border-(--border-color) w-full md:w-[50%] "
-                            type="text" name="" id="" placeholder='document.md'
+                            class="flex justify-center items-center p-1 bg-(--button-bg) text-md md:text-sm 
+                            rounded border-2 border-solid border-(--bg-color) hover:border-(--border-color) 
+                            cursor-pointer hover:text-(--border-color) outline-0 focus:border-(--border-color) 
+                            w-full md:w-[50%] "
+                            type="text" name="" id="" placeholder='untitled.md'
                             required={true}
                             onChange={e => { setEditorDocTitle(e.target.value) }}
                             value={title}

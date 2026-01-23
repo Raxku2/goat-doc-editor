@@ -21,9 +21,6 @@ const Settings = () => {
             <div class="w-full md:w-[70dvw] lg:w-[60dvw] p-4 ">
                 <div class="overflow-y-scroll">
 
-
-                    {/* it's settings */}
-
                     <div class=" ">
                         <div class="flex justify-center content-center " >
                             <RiAccountCircle2Line size={'30%'} />
@@ -32,6 +29,7 @@ const Settings = () => {
                             <h1 class="text-4xl font-bold">{userName}</h1>
                         </div>
                     </div>
+
                     <div class="flex justify-center items-center p-4">
                         <h1 class="px-2 text-xl">Theme:</h1>
                         <select name="theme" id="theme" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color)"
@@ -50,8 +48,6 @@ const Settings = () => {
 
                             })}
                         </select>
-
-
                     </div>
 
                     <div class="flex justify-center items-center">
@@ -60,7 +56,7 @@ const Settings = () => {
 
                     <div class="flex justify-center p-2 ">
 
-                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" >About</a>
+                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" > About </a>
                     </div>
 
                     <div class="flex justify-center items-center">
@@ -69,7 +65,7 @@ const Settings = () => {
 
                     <div class="flex justify-center p-2 ">
 
-                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" >Keyboard Shortcuts</a>
+                        <a href="http://" class="rounded-sm  border-2 p-2 border-(--bg-color) hover:border-(--border-color) text-white/20" > Keyboard Shortcuts </a>
                     </div>
 
                     <div class="flex justify-center items-center">
