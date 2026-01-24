@@ -37,7 +37,7 @@ const UseBackend = () => {
 
         if (res.status === 302) {
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             addUserDocument(data);
         } else {
             console.log('no doc available');
