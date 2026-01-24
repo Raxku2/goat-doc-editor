@@ -66,3 +66,8 @@ body,
   border-radius: 8px;
   overflow-x: auto;
 }
+
+
+.tippy-box {
+  @apply bg-(--button-bg) text-(--text-color) text-xs px-2 py-1 rounded border-1 border-(--border-color);
+}

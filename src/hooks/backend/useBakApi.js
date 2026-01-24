@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { EditorDoc, UserStore } from "../../store";
 
 const UseBackend = () => {
@@ -36,7 +37,7 @@ const UseBackend = () => {
 
         if (res.status === 302) {
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             addUserDocument(data);
         } else {
             console.log('no doc available');
@@ -68,8 +69,7 @@ const UseBackend = () => {
     };
 
     const create_new = async () => {
-        const doc_title = title ? title === "" : "untitled"
-        console.log(doc_title);
+        const doc_title = title ? title !== "" && title : "untitled"
         
         const res = await fetch(`${backendApi}/document/doc`, {
             method: "POST",
