@@ -1,11 +1,11 @@
 import { h, Component } from 'preact';
 import { EditorDoc, UserStore, useSampleDoc } from '../../store';
 import { useEffect, useState } from 'preact/hooks';
-import { RiFileAddLine, RiFileEditLine, RiFolderOpenLine } from '@remixicon/react';
+import { RiFileEditLine, RiFolderOpenLine } from '@remixicon/react';
 import { route } from 'preact-router';
-import DocumentCard from '../cards/DocumentCard';
 import { UseBackend } from '../../hooks';
 import LoadingBar from '../lodingBar/LoadingBar';
+import clsx from 'clsx';
 
 const FileOpen = () => {
     const { smtitle, smid } = useSampleDoc();
@@ -72,7 +72,7 @@ const FileOpen = () => {
                         return (<>
                             {/* <DocumentCard documentId={e._id} DocumentTitle={e.title} /> */}
                             <tr class=" text-lg font-bold hover:bg-(--button-bg)/60 w-full">
-                                <td class="flex p-4 text-(--text-color) cursor-pointer border-r-(--border-color)/20 border-r-2"
+                                <td class="flex p-2 text-(--text-color) text-[10px] lg:text-base font-bold cursor-pointer border-r-(--border-color)/20 border-r-2"
                                     onClick={async () => {
                                         setEditorDocId(e._id);
                                         setEditorDocTitle(e.title);
@@ -97,11 +97,17 @@ const FileOpen = () => {
                 <>
                     {/* <DocumentCard documentId={smid} DocumentTitle={smtitle} /> */}
                     <tr class=" text-lg font-bold hover:bg-(--button-bg)/60">
-                        <td class="flex p-4 text-(--text-color) ">
+                        <td class="flex p-4 text-(--text-color) "
+                                    onClick={async () => {
+                                        setEditorDocId(smid);
+                                        setEditorDocTitle(smid);
+                                        await getDocData(smid);
+                                        route('/editor');
+                                    }}>
                             {smtitle}
                         </td>
                         <td class="p-4 text-left w-[20%]">
-                            rakesh
+                            
                         </td>
                     </tr>
                 </>
@@ -111,24 +117,17 @@ const FileOpen = () => {
 
     return (
         <div class="w-full h-[95%] flex md:flex-row flex-col">
-            <div class=" md:w-[16%] flex md:flex-col items-center 
-            border-r border-(--border-color) ">
+            <div class=" md:w-[25%] lg:w-[16%] md:border-r border:border-(--border-color) flex md:flex-col items-center md:p-0 ">
 
                 <button
-                    class="p-2 rounded border-2 border-(--border-color) 
-                        md:border-(--bg-color) hover:border-(--border-color) 
-                        hover:bg-(--button-bg) flex  items-center  
-                        text-lg  cursor-pointer m-1 w-[80%] text-(--text-color)/20"
+                    class={clsx("p-2 rounded-lg md:rounded-xl border-2 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg) flex items-center text-sm lg:text-lg w-[50%] cursor-pointer m-1 md:w-[80%]")}
                 >
                     <RiFolderOpenLine size={20} />
                     <h1 class="mx-4">Load File</h1>
                 </button>
 
                 <button
-                    class="p-2 rounded border-2 border-(--border-color) 
-                        md:border-(--bg-color) hover:border-(--border-color) 
-                        hover:bg-(--button-bg) flex items-center
-                        text-lg cursor-pointer m-1 w-[80%]"
+                    class={clsx("p-2 rounded-lg md:rounded-xl border-2 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg) flex items-center text-sm lg:text-lg w-[50%] cursor-pointer m-1 md:w-[80%]")}
                     onClick={() => { route('/editor') }}
                 >
                     <RiFileEditLine size={20} />
@@ -138,12 +137,12 @@ const FileOpen = () => {
             </div>
 
             <div class=" md:w-[84%] ">
-                <div class="px-8 my-8 ">
-                    <h1 class="text-2xl font-bold">My Documents</h1>
+                <div class="px-4 md:px-8 my-8 ">
+                    <h1 class="text-lg md:text-2xl font-black">My Documents</h1>
                 </div>
 
                 <div class="mx-8 my-4 min-h-4 max-h-[70vh] border-2 
-                border-(--border-color) rounded-2xl overflow-hidden 
+                border-(--border-color) rounded-md lg:rounded-lg overflow-hidden 
                 flex flex-col"
                     hidden={!docVisibility}
                 >
@@ -152,11 +151,11 @@ const FileOpen = () => {
                     <table class="w-full border-collapse">
                         <thead>
                             <tr class="bg-(--button-bg)">
-                                <th class="p-4 text-left text-(--text-color) 
+                                <th class="p-2 text-left text-(--text-color) text-[12px] lg:text-lg font-bold
                                 w-[80%] border-r-(--border-color)/20 border-r-2">
                                     TITLE
                                 </th>
-                                <th class="p-4 text-left w-[20%]">ACTIONS</th>
+                                <th class="p-2 text-left w-[20%] text-[12px] lg:text-lg">ACTIONS</th>
                             </tr>
                         </thead>
                     </table>
@@ -171,8 +170,8 @@ const FileOpen = () => {
                     </div>
 
                 </div>
-                <div class="mx-8 my-4 flex justify-center items-center h-[50%] w-full">
-                    <div class="h-4 w-full md:w-[80%] lg:w-[70%]" hidden={!loadingbarVisibility}>
+                <div class="mx-8 my-4 flex justify-center items-center h-[50%] w-full"  hidden={!loadingbarVisibility}>
+                    <div class="h-4 w-full md:w-[80%] lg:w-[70%]">
                         <LoadingBar />
                     </div>
                 </div>

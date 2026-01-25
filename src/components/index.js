@@ -1,4 +1,5 @@
 
+import About from "./about/About"
 import Auth from "./auth/Auth"
 import DocumentCard from "./cards/DocumentCard"
 import DocEditor from "./editor/DocEditor"
@@ -9,6 +10,7 @@ import FileOpen from "./open/FileOpen"
 import Settings from "./settings/Settings"
 import Test from "./test/Test"
 export {
+    About,
     LoadingBar,
     Test,
     Auth,
