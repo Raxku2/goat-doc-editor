@@ -46,10 +46,10 @@ const About = () => {
 
                     <div class="p-4 lg:p-14 bg-(--button-bg) rounded-2xl flex justify-center flex-col lg:flex-row ">
 
-                        <div class="lg:w-[20%] lg:pr-4 content-center">
+                        <div class="lg:w-[20%] lg:pr-4 p-10 lg:p-0  content-center">
                             <div class=" rounded-full overflow-hidden p-1 border-4 border-(--border-color)">
-                                <div class="rounded-full overflow-hidden ">
-                                    <img src="http://github.com/raxku2.png" alt="" srcset="" />
+                                <div class="rounded-full overflow-hidden  ">
+                                    <img src="https://github.com/raxku2.png" alt="" srcset="" class="w-full h-full" />
                                 </div>
                             </div>
 
@@ -57,7 +57,7 @@ const About = () => {
 
                         <div class="w-[80%] px-0 lg:px-4">
                             <h1 class="text-2xl font-black py-2">Pinaka</h1>
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="decoration-0 text-(--border-color) font-bold py-2">@raxku2</a>
+                            <a href="https://instagram.com/raxku2" target="_blank" rel="noopener noreferrer" class="decoration-0 text-(--border-color) font-bold py-2">@raxku2</a>
                             <p class="py-4 text-sm">GOAT Markdown Editor was born as a pracitce project to explore the boundaries of high-performance web editors and modern UI design. It represents a commitment to clean code and user-centric architecture. </p>
                             <button class="flex pt-8 text-(--border-color) cursor-pointer"
                                 onClick={() => {
