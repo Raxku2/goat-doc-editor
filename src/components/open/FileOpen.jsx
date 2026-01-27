@@ -120,7 +120,7 @@ const FileOpen = () => {
             <div class=" md:w-[25%] lg:w-[16%] md:border-r border:border-(--border-color) flex md:flex-col items-center md:p-0 ">
 
                 <button
-                    class={clsx("p-2 rounded-lg md:rounded-xl border-2 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg) flex items-center text-sm lg:text-lg w-[50%] cursor-pointer m-1 md:w-[80%]")}
+                    class={clsx("p-2 rounded-lg md:rounded-xl border-2 border-(--border-color) md:border-(--bg-color) hover:border-(--border-color) hover:bg-(--button-bg) flex items-center text-sm lg:text-lg w-[50%] cursor-pointer m-1 md:w-[80%] text-(--text-color)/50")}
                 >
                     <RiFolderOpenLine size={20} />
                     <h1 class="mx-4">Load File</h1>
@@ -176,12 +176,6 @@ const FileOpen = () => {
                     </div>
                 </div>
             </div>
-
-
-            {/* <div class="w-full md:w-[80%] lg:w-[70%] flex justify-center 
-            items-center flex-col overflow-y-scroll ">
-
-            </div> */}
 
 
         </div>
