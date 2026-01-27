@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Styling-TailwindCSS-38bdf8?style=flat-square" />
   <img src="https://img.shields.io/badge/State-Zustand-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Deployed-Vercel-black?style=flat-square" />
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/License-Apache%202.0-D22128?style=flat-square" />
 </p>
 
 > **A modern, blazing-fast, and beautifully crafted Markdown editor for developers who care about experience.**
