@@ -191,7 +191,8 @@ This is primarily a personal practice project, but:
 
 ## 📜 License
 
-<!-- This project is licensed under the **MIT License**. -->
+Licensed under the Apache License 2.0 © Pinaka
+
 
 ---
 
